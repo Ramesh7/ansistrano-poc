@@ -1,0 +1,3 @@
+---
+- name: Restart Passenger worker for {{ hostname }}
+  command: touch {{ ansistrano_deploy_to }}/current/tmp/restart.txt

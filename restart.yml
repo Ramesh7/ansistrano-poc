@@ -1,0 +1,7 @@
+- name: Deploy example app to coupa_control
+  hosts: all
+  vars_files:
+    - "vars/{{stage}}.yml"
+    - "vars/main.yml"
+  tasks:
+    - include: tasks/web/restart.yml

@@ -1,22 +1,32 @@
 ---
 - name: Deploy example app to coupa_control
-- hosts: app,
-  vars:
-    domain: 'coupadev.com'
-    stage: 'dev'
-    slave: {{deployment}}dbs.{{domain}}
-    master: {{deployment}}dbm.{{domain}}
-    ansistrano_deploy_to: "/mnt/apps/control-poc-{{stage}}.{{domain}}"
-    ansistrano_keep_releases: 3
-    ansistrano_deploy_via: git
-    ansistrano_git_repo: git@github.com:coupa-ops/coupa-control.git
-    ansistrano_git_branch: "{{revision}}"
-
+  hosts: all
   vars_files:
-    - vars/{{stage}}.yml
+    - "vars/{{stage}}.yml"
+    - "vars/main.yml"
   roles:
     - { role: carlosbuenosvinos.ansistrano-deploy }
 
-- hosts: utl-primary
+- name: Activity realted to utility servers
+  hosts: utl
+  vars_files:
+    - "vars/{{stage}}.yml"
+    - "vars/main.yml"
+  roles:
+    - { role: db.backup }
+
+- name: Activity realted to application servers
+  hosts: app
+  vars_files:
+    - "vars/{{stage}}.yml"
+    - "vars/main.yml"
+  roles:
+    - { role: db.backup }
+
+- name: Activity realted to primary host
+  hosts: utl-primary
+  vars_files:
+    - "vars/{{stage}}.yml"
+    - "vars/main.yml"
   roles:
     - { role: db.backup }

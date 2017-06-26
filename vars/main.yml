@@ -1,0 +1,8 @@
+slave: "{{ deployment }}dbs.{{ domain }}"
+master: "{{ deployment }}dbm.{{ domain }}"
+hostname: "{{ customer }}.{{ domain }}"
+ansistrano_deploy_to: "/mnt/apps/{{ customer }}.{{ domain }}"
+ansistrano_keep_releases: 5
+ansistrano_deploy_via: git
+ansistrano_git_repo: git@github.com:coupa-ops/coupa-control.git
+ansistrano_git_branch: "{{ revision }}"
