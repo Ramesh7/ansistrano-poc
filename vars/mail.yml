@@ -1,0 +1,6 @@
+---
+ansistrano_keep_releases: 3
+ansistrano_deploy_via: "git"
+## GTI INFO
+ansistrano_git_repo: git@github.com:coupa-ops/coupa-control.git
+ansistrano_git_branch: "{{revision}}"

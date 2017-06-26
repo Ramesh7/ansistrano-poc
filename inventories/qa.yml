@@ -2,12 +2,10 @@
 - name: Deploy example app to coupa_control
   hosts: all
   vars:
+    - ../vars/main.yml
+    domain: 'coupadev.com'
+    stage: 'qa'
     ansistrano_deploy_to: "/mnt/apps/control-{{stage}}.{{domain}}"
-    ansistrano_keep_releases: 3
-    ansistrano_deploy_via: "git"
-    ## GIT pull strategy
-    ansistrano_git_repo: git@github.com:coupa-ops/coupa-control.git
-    ansistrano_git_branch: "{{revision}}"
 
   roles:
-    - { role: ansistrano-deploy }
+    - { role: carlosbuenosvinos.ansistrano-deploy }
