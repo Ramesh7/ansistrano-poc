@@ -1,0 +1,5 @@
+---
+- name: Rollback example app to coupa-control
+  hosts: all
+  roles:
+    - { role: ansistrano-rollback }
