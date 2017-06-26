@@ -1,0 +1,4 @@
+---
+domain: 'coupadev.com'
+stage: 'qa'
+ansistrano_deploy_to: "/mnt/apps/control-{{stage}}.{{domain}}"

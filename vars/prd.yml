@@ -1,0 +1,4 @@
+---
+domain: 'coupahost.com'
+stage: 'prd'
+ansistrano_deploy_to: "/mnt/apps/control-next.coupahost.com"

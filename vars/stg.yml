@@ -1,0 +1,4 @@
+---
+domain: 'coupahost.com'
+stage: 'stg'
+ansistrano_deploy_to: "/mnt/apps/control-test.coupahost.com"

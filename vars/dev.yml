@@ -1,0 +1,4 @@
+---
+domain: 'coupadev.com'
+stage: 'dev'
+ansistrano_deploy_to: "/mnt/apps/control-poc-{{stage}}.{{domain}}"
